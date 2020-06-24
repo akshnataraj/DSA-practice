@@ -1,14 +1,33 @@
 '''
 Algorithm:
-Input arr[] = {3, 4, 5, 1, 2}
-Element to Search = 1
-  1) Find out pivot point and divide the array in two
-      sub-arrays. (pivot = 2) /*Index of 5*/
-  2) Now call binary search for one of the two sub-arrays.
-      (a) If element is greater than 0th element then
-             search in left array
-      (b) Else Search in right array
-          (1 will go in else as 1 < 0th element(3))
-  3) If element is found in selected sub-array then return index
-     Else return -1.
+Logic based on the fact that one of the subarrays will be sorted!
+https://stackoverflow.com/questions/4773807/searching-in-a-sorted-and-rotated-array
  '''
+
+ def searchArray(a,low,high,x):
+    mid = int((low + high)/2)
+#     print(a[mid])
+
+    if a[mid]==x:
+        return mid
+    if low>high:
+        return -1
+    
+    if a[low]<=a[mid]: #left array is sorted
+        if a[low]>=x and a[mid]<=x:
+            return searchArray(a,low,mid-1,x)
+        else:
+            return searchArray(a,mid+1,high,x)
+    else: #right array is sorted
+        print(a[mid],a[high])
+        if a[mid]<=x and a[high]>=x:
+            return searchArray(a,mid+1,high,x)
+        else:
+            return searchArray(a,low,mid-1,x)
+
+a = [4,5,1,2,3]
+x = 5
+low = 0
+high = len(a)-1
+idx = searchArray(a,low,high,x)
+print('Indexed at idx: ',idx)
