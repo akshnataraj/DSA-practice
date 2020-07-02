@@ -30,3 +30,11 @@ x = 14
 m = int(np.ceil(np.sqrt(n)))
 idx = jumpSearch(a,m,x)
 print('Element found at: ',idx)
+
+
+# def middleNode(self, head):
+#         slow = fast = head
+#         while fast and fast.next:
+#             slow = slow.next
+#             fast = fast.next.next
+#         return slow
