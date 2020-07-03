@@ -6,17 +6,18 @@ class MyCircularQueue:
         """
         self.q = [None]*k
         self.size = k
-        self.front = 0
-        self.rear = k
+        self.front = -1
+        self.rear = -1
         
 
     def enQueue(self, value: int) -> bool:
         """
         Insert an element into the circular queue. Return true if the operation is successful.
         """
-        if isFull(len(self.q)):
+        if (isFull()==True):
             return False
         self.q[self.rear] = value
+        self.rear = (self.rear + 1) % self.k
         return True
         
 
@@ -24,9 +25,10 @@ class MyCircularQueue:
         """
         Delete an element from the circular queue. Return true if the operation is successful.
         """
-        if isEmpty(len(self.q)):
+        if (isEmpty()==True):
             return False
         self.q[self.front] = None
+        self.front = (self.front + 1) % self.k
         return True
         
 
