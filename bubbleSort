@@ -9,3 +9,9 @@ bubbleSort(arr[], n)
 } 
 
 
+Recursion Idea.
+
+Base Case: If array size is 1, return.
+Do One Pass of normal Bubble Sort. This pass fixes last element of current subarray.
+Recur for all elements except last of current subarray.
+Below is implementation of above idea.
